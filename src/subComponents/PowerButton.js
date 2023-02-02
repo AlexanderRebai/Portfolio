@@ -3,12 +3,13 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import {PowerBtn} from '../components/AllSvgs';
+import { render } from '@testing-library/react';
 
 const Power = styled.button`
     position: fixed;
     top: 2rem;
     left: 50%;
-    transform: translateX(-50%, 0);
+    transform: translate(-50%, 0);
 
     background-color: #FCF6F4;
     padding: 0.3rem;

@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { darkTheme as DarkTheme } from '../components/Themes'
 
 const Logo = styled.div`
     display: inline-block;
-    color: ${props => props.theme.text};
+    color: ${props => props.color === "dark" ? DarkTheme.text : DarkTheme.body};
     font-family: 'Pacifico', cursive;
 
     position: fixed;
@@ -12,9 +13,9 @@ const Logo = styled.div`
     z-index: 3;
 `
 
-const LogoComponent = () => {
+const LogoComponent = (props) => {
   return (
-    <Logo>
+    <Logo color={props.theme}>
         Alexander.R.
     </Logo>
   )

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import LogoComponent from '../subComponents/LogoComponent';
 import PowerButton from '../subComponents/PowerButton';
 import SocialIcons from '../subComponents/SocialIcons';
+import {YinYang} from './AllSvgs';
+import Intro from './Intro';
+import {motion} from 'framer-motion';
 
 const MainContainer = styled.div`
   background: ${props => props.theme.body};
@@ -43,7 +46,7 @@ const Blog = styled (NavLink)`
 `;
 
 const Work = styled (NavLink)`
-  color: ${props => props.theme.text};
+  color: ${props => (props.click ? props.theme.body : props.theme.text)};
   position: absolute;
   top: 50%;
   left: calc(1rem + 2vw); 
@@ -64,7 +67,7 @@ const BottomBar = styled.div`
 `;
 
 const About = styled (NavLink)`
-  color: ${props => props.theme.text};
+  color: ${props => (props.click ? props.theme.body : props.theme.text)};
   text-decoration: none;
   z-index: 3;
 `;
@@ -75,47 +78,110 @@ const Skills = styled (NavLink)`
   z-index: 3;
 `;
 
+const rotate = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`;
+
+const Center = styled.button`
+  position: absolute;
+  top: ${props => (props.click ? '85%' : '50%')};
+  left: ${props => (props.click ? '92%' : '50%')};
+  transform: translate(-50%, -50%);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+
+  &>:first-child {
+    animation: ${rotate} 2.5s linear infinite;
+  }
+
+  &>:last-child {
+    display: ${props => (props.click ? 'none' : 'inline-block')};
+    padding-top: 1rem;
+  }
+`;
+
+const DarkDiv = styled.div`
+  position: absolute;
+  top: 0;
+  background-color: #000;
+  bottom: 0;
+  right: 50%;
+  width: ${props => (props.click ? '50%' : '0%')};
+  height: ${props => (props.click ? '100%' : '0%')};
+  z-index: 1;
+  transition: height 0.5s ease, width 1s ease 0.5s;
+`;
+
 const Main = () => {
+  const [click, setClick] = useState (false);
+
+  const handleClick = () => {
+    setClick (!click);
+  };
+
   return (
     <MainContainer>
+      <DarkDiv click={click} />
       <Container>
-        <PowerButton />
-        <LogoComponent />
-        <SocialIcons />
+        <LogoComponent theme={click ? 'dark' : 'light'} />
+        <SocialIcons theme={click ? 'dark' : 'light'} />
+
+        <Center click={click}>
+          <YinYang
+            onClick={() => handleClick ()}
+            width={click ? 120 : 200}
+            height={click ? 120 : 200}
+            fill="currentColor"
+          />
+          <span>click here</span>
+        </Center>
 
         <Contact
           target="_blank"
           to={{pathname: 'mailto:rebai-alexander@hotmail.com'}}
         >
-          <h2>
+          <motion.h2 whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
             Say hi...
-          </h2>
+          </motion.h2>
         </Contact>
-
         <Blog to="/blog">
-          <h2>
+          <motion.h2 whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
             Blog
-          </h2>
+          </motion.h2>
         </Blog>
-        <Work to="/work">
-          <h2>
+        <Work to="/work" click={click}>
+          <motion.h2 whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
             Work
-          </h2>
+          </motion.h2>
         </Work>
         <BottomBar>
-          <About to="/about">
-            <h2>
+          <About to="/about" click={click}>
+            <motion.h2 whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
               About.
-            </h2>
+            </motion.h2>
           </About>
           <Skills to="/skills">
-            <h2>
+            <motion.h2 whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
               My Skills.
-            </h2>
+            </motion.h2>
           </Skills>
         </BottomBar>
 
       </Container>
+      {click ? <Intro /> : null}
     </MainContainer>
   );
 };
