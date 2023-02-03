@@ -7,6 +7,7 @@ import SocialIcons from '../subComponents/SocialIcons';
 import PowerButton from '../subComponents/PowerButton';
 import ParticleComponent from '../subComponents/ParticleComponent';
 import astronaut from '../assets/Images/spaceman.png';
+import BigTitle from '../subComponents/BigTitle';
 
 const Box = styled.main`
   background-color: ${props => props.theme.body};
@@ -74,6 +75,7 @@ const AboutPage = () => {
         <SocialIcons theme="dark" />
         <PowerButton />
         <ParticleComponent theme="dark" />
+        <BigTitle text="About" top="10%" left="5%"/>
 
         <Main>
           <p>

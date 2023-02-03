@@ -7,6 +7,7 @@ import LogoComponent from '../subComponents/LogoComponent';
 import SocialIcons from '../subComponents/SocialIcons';
 import PowerButton from '../subComponents/PowerButton';
 import ParticleComponent from '../subComponents/ParticleComponent';
+import BigTitle from '../subComponents/BigTitle';
 
 const Box = styled.main`
   background-color: ${props => props.theme.body};
@@ -87,6 +88,8 @@ const MySkillsPage = () => {
         <SocialIcons theme="light" />
         <PowerButton />
         <ParticleComponent theme="light" />
+        <BigTitle text="Skills" top="80%" right="30%"/>
+
         <Main>
           <Title>
             <Design width={40} height={40} /> Designer

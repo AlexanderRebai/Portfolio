@@ -4,6 +4,7 @@ import img from '../assets/Images/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg';
 import LogoComponent from '../subComponents/LogoComponent';
 import PowerButton from '../subComponents/PowerButton';
 import SocialIcons from '../subComponents/SocialIcons';
+import BigTitle from '../subComponents/BigTitle';
 
 import {Blogs} from '../data/BlogData';
 import BlogComponent from './BlogComponent';
@@ -53,6 +54,7 @@ const BlogPage = () => {
         <LogoComponent />
         <PowerButton />
         <SocialIcons />
+        <BigTitle text="Blog" top="5rem" left="5rem"/>
         <AnchorComponent numbers={numbers} />
         <Center>
           <Grid>
