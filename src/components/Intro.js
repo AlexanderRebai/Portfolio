@@ -49,7 +49,6 @@ const Text = styled.div`
     font-size: calc(1rem + 1.5vw);
     color: ${props => props.theme.body};
     padding: 2rem;
-    cursor: pointer;
 
     display: flex;
     flex-direction: column;
