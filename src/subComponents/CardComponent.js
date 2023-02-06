@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import {Github} from '../components/AllSvgs';
+import {mediaQueries} from '../components/Themes';
 
-const Box = styled(motion.div)`
+const Box = styled (motion.li)`
     width: 16rem;
     height: 40vh;
     background-color: ${props => props.theme.text};
@@ -23,6 +24,32 @@ const Box = styled(motion.div)`
         color: ${props => props.theme.text};
         border: 1px solid ${props => props.theme.text};
     }
+
+  ${mediaQueries (50)`
+        width:16rem;
+        margin-right:6rem;
+        height:35vh;
+  `};
+  
+  ${mediaQueries (40)`
+        width:14rem;
+        margin-right:4rem;
+        height:35vh;
+  `};
+
+  ${mediaQueries (25)`
+        width:12rem;
+        margin-right:4rem;
+        height:35vh;
+        padding:1.5rem 1.5rem;
+  `};
+
+  ${mediaQueries (20)`
+        width:10rem;
+        margin-right:4rem;
+        height:40vh;
+  `};
+
 `;
 
 const Title = styled.h2`
@@ -33,6 +60,15 @@ const Description = styled.h2`
     font-size: calc(0.8em + 0.3vw);
     font-family: 'Karla', sans-serif;
     font-weight: 500;
+
+  ${mediaQueries (25)`
+      font-size:calc(0.7em + 0.3vw);
+  `};
+  
+  ${mediaQueries (20)`
+      font-size:calc(0.6em + 0.3vw);
+  `};
+
 `;
 
 const Tags = styled.div`
@@ -49,6 +85,11 @@ const Tags = styled.div`
 const Tag = styled.span`
     margin-right: 1rem;
     font-size: calc(0.8em + 0.3vw);
+
+  ${mediaQueries (25)`
+      font-size:calc(0.7em);
+  `};
+  
 `;
 
 const Footer = styled.footer`
@@ -85,21 +126,21 @@ const Git = styled (NavLink)`
 
 //Framer-motion configuration
 const container = {
-  hidden: {scale:0},
+  hidden: {scale: 0},
   show: {
-    scale:1,
-    transition: { 
-      type: "spring",
+    scale: 1,
+    transition: {
+      type: 'spring',
       duration: 0.8,
-    }
-  }
-}
+    },
+  },
+};
 
 const CardComponent = props => {
   const {id, name, description, tags, demo, github} = props.data;
 
   return (
-    <Box key={id} variants={container} >
+    <Box key={id} variants={container}>
       <Title>{name}</Title>
       <Description>{description}</Description>
       <Tags>
@@ -112,7 +153,7 @@ const CardComponent = props => {
           Visit
         </Link>
         <Git to="/" target="_blank">
-          <Github width={40} height={40}/>
+          <Github width={40} height={40} />
         </Git>
       </Footer>
     </Box>

@@ -3,7 +3,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import {PowerBtn} from '../components/AllSvgs';
-import { render } from '@testing-library/react';
+import { mediaQueries } from "../components/Themes";
 
 const Power = styled.button`
     position: fixed;
@@ -34,6 +34,15 @@ const Power = styled.button`
         text-decoration: none;
         color: inherit;
     }
+
+  ${mediaQueries(40)`
+    width: 2rem;
+    height: 2rem;
+    svg{
+      width:20px;
+      height:20px;
+    }
+  `};
 `;
 
 const PowerButton = () => {
