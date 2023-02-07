@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
-import {Facebook, Github, Twitter, YouTube} from '../components/AllSvgs';
+import {Facebook, Github, LinkedIn, Twitter, YouTube} from '../components/AllSvgs';
 import {darkTheme as DarkTheme} from '../components/Themes';
 import {motion} from 'framer-motion';
 
@@ -68,57 +68,14 @@ const SocialIcons = props => {
           delay: 1.4,
         }}
       >
-        <NavLink style={{color: 'inherit'}} to="/">
-          <Twitter
+        <NavLink style={{color: 'inherit'}} target="_blank"  to={{pathname: 'https://www.linkedin.com/in/alexander-rebai-0b2a02246/'}}>
+          <LinkedIn
             width={25}
             height={25}
             fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body}
           />
         </NavLink>
       </motion.div>
-      <motion.div
-        initial={{
-          transform: 'scale(0)',
-        }}
-        animate={{
-          scale: [0, 1, 1.5, 1],
-        }}
-        transition={{
-          type: 'spring',
-          duration: 1,
-          delay: 1.6,
-        }}
-      >
-        <NavLink style={{color: 'inherit'}} to="/">
-          <Facebook
-            width={25}
-            height={25}
-            fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body}
-          />
-        </NavLink>
-      </motion.div>
-      <motion.div
-        initial={{
-          transform: 'scale(0)',
-        }}
-        animate={{
-          scale: [0, 1, 1.5, 1],
-        }}
-        transition={{
-          type: 'spring',
-          duration: 1,
-          delay: 1.8,
-        }}
-      >
-        <NavLink style={{color: 'inherit'}} to="/">
-          <YouTube
-            width={25}
-            height={25}
-            fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body}
-          />
-        </NavLink>
-      </motion.div>
-
       <Line
         initial={{
           height: 0,

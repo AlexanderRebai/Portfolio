@@ -148,14 +148,6 @@ const CardComponent = props => {
           return <Tag key={index}>#{item}</Tag>;
         })}
       </Tags>
-      <Footer>
-        <Link to="/" target="_blank">
-          Visit
-        </Link>
-        <Git to="/" target="_blank">
-          <Github width={40} height={40} />
-        </Git>
-      </Footer>
     </Box>
   );
 };

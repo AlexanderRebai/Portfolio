@@ -9,9 +9,8 @@ import Loading from "./subComponents/Loading";
 //Components
 const Main = lazy(() => import("./components/Main"));
 const AboutPage = lazy(() => import("./components/AboutPage"));
-const MySkillsPage = lazy(() => import("./components/MySkillsPage"));
-const BlogPage = lazy(() => import("./components/BlogPage"));
 const WorkPage = lazy(() => import("./components/WorkPage"));
+const SkillsPage = lazy(() => import("./components/SkillsPage"));
 const SoundBar = lazy(() => import("./subComponents/SoundBar"));
 
 function App() {
@@ -28,9 +27,8 @@ function App() {
       <Switch location={location} key={location.pathname} >
           <Route exact path="/" component={Main}/>
           <Route exact path="/about" component={AboutPage}/>
-          <Route exact path="/blog" component={BlogPage}/>
           <Route exact path="/work" component={WorkPage}/>
-          <Route exact path="/skills" component={MySkillsPage}/>
+          <Route exact path="/skills" component={SkillsPage}/>
         </Switch>
       </AnimatePresence>
       </Suspense>      

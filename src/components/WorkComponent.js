@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {mediaQueries} from './Themes';
 import {motion} from 'framer-motion';
+import {Github} from '../components/AllSvgs';
+import {NavLink} from 'react-router-dom';
 
 const Box = styled (motion.a)`
     width: calc(10rem + 15vw);
@@ -13,7 +15,6 @@ const Box = styled (motion.a)`
     backdrop-filter: blur(2px);
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
-    cursor: pointer;
     &:hover {
         color: ${props => props.theme.body};
         background-color: ${props => props.theme.text};
@@ -92,14 +93,6 @@ const HashTag = styled.span`
     padding-right: 0.5rem;
 `;
 
-const Date = styled.span`
-    padding:0.5rem 0;
-
-    ${mediaQueries (25)`
-      font-size:calc(0.5em + 1vw);
-    `};
-`;
-
 const Container = styled (motion.div)``;
 
 //Framer-motion configuration
@@ -114,8 +107,40 @@ const container = {
   },
 };
 
-const BlogComponent = props => {
-  const {name, tags, date, imgSrc, link} = props.blog;
+const Footer = styled.footer`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+`;
+
+const Link = styled (NavLink)`
+    background-color: ${props => props.theme.text};
+    color: ${props => props.theme.body};
+    text-decoration: none;
+    padding: 0.5rem calc(2rem + 2vw);
+    font-size: calc(1em + 0.5vw);
+    border-radius: 0.5rem;
+
+    ${Box}:hover & {
+        background-color: ${props => props.theme.body};
+        color: ${props => props.theme.text};
+    }
+`;
+
+const Git = styled (NavLink)`
+    color: inherit;
+    text-decoration: none;
+    padding-left: 0.5rem;
+
+    ${Box}:hover & {
+        &>* {
+            fill: ${props => props.theme.body};
+        }
+    }
+`;
+
+const WorkComponent = props => {
+  const {name, tags, imgSrc, link} = props.blog;
 
   return (
     <Container variants={container}>
@@ -127,10 +152,17 @@ const BlogComponent = props => {
             return <HashTag key={index}>#{tag}</HashTag>;
           })}
         </HashTags>
-        <Date>{date}</Date>
+        <Footer>
+          <Link to="/" target="_blank">
+            Visit
+          </Link>
+          <Git to="/" target="_blank">
+            <Github width={40} height={40} />
+          </Git>
+        </Footer>
       </Box>
     </Container>
   );
 };
 
-export default BlogComponent;
+export default WorkComponent;

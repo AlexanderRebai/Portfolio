@@ -48,7 +48,7 @@ const Contact = styled.a`
   z-index: 3;
 `;
 
-const Blog = styled (NavLink)`
+const Work = styled (NavLink)`
   color: ${props => (props.click ? props.theme.body : props.theme.text)};
   position: absolute;
   top: 50%;
@@ -63,7 +63,7 @@ const Blog = styled (NavLink)`
 
 `;
 
-const Work = styled (NavLink)`
+const Skills = styled (NavLink)`
   color: ${props => (props.click ? props.theme.body : props.theme.text)};
   position: absolute;
   top: 50%;
@@ -90,12 +90,6 @@ const BottomBar = styled.div`
 
 const About = styled (NavLink)`
   color: ${props => (props.click ? props.theme.body : props.theme.text)};
-  text-decoration: none;
-  z-index: 3;
-`;
-
-const Skills = styled (NavLink)`
-  color: ${props => props.theme.text};
   text-decoration: none;
   z-index: 3;
 `;
@@ -183,7 +177,7 @@ const Main = () => {
   };
 
   const moveX = {
-    x: `${path === 'work' ? '100%' : '-100%'}`,
+    x: `${path === 'Skills' ? '100%' : '-100%'}`,
   };
 
   const mq = window.matchMedia ('(max-width: 50em)').matches;
@@ -263,7 +257,7 @@ const Main = () => {
               </Contact>}
 
           {mq
-            ? <Blog click={+click} onClick={() => setpath ('Blog')} to="/Blog">
+            ? <Work click={+click} onClick={() => setpath ('work')} to="/work">
                 <motion.h2
                   initial={{
                     y: -200,
@@ -276,10 +270,10 @@ const Main = () => {
                   whileHover={{scale: 1.1}}
                   whileTap={{scale: 0.9}}
                 >
-                  Blog
+                  Work
                 </motion.h2>
-              </Blog>
-            : <Blog click={+false} onClick={() => setpath ('Blog')} to="/Blog">
+              </Work>
+            : <Work click={+false} onClick={() => setpath ('work')} to="/work">
                 <motion.h2
                   initial={{
                     y: -200,
@@ -292,13 +286,13 @@ const Main = () => {
                   whileHover={{scale: 1.1}}
                   whileTap={{scale: 0.9}}
                 >
-                  Blog
+                  Work
                 </motion.h2>
-              </Blog>}
+              </Work>}
 
-          <Work click={+click} to="/work">
+          <Skills click={+click} to="/skills">
             <motion.h2
-              onClick={() => setpath ('work')}
+              onClick={() => setpath ('skills')}
               initial={{
                 y: -200,
                 transition: {type: 'spring', duration: 1.5, delay: 1},
@@ -310,9 +304,9 @@ const Main = () => {
               whileHover={{scale: 1.1}}
               whileTap={{scale: 0.9}}
             >
-              Work
+              Skills
             </motion.h2>
-          </Work>
+          </Skills>
 
           <BottomBar>
             <About
@@ -336,23 +330,6 @@ const Main = () => {
                 About.
               </motion.h2>
             </About>
-            <Skills to="/skills">
-              <motion.h2
-                onClick={() => setpath ('skills')}
-                initial={{
-                  y: 200,
-                  transition: {type: 'spring', duration: 1.5, delay: 1},
-                }}
-                animate={{
-                  y: 0,
-                  transition: {type: 'spring', duration: 1.5, delay: 1},
-                }}
-                whileHover={{scale: 1.1}}
-                whileTap={{scale: 0.9}}
-              >
-                My Skills.
-              </motion.h2>
-            </Skills>
           </BottomBar>
 
         </Container>
