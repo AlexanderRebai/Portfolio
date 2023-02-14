@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import styled, {keyframes} from 'styled-components';
 import music from '../assets/audio/song_techno.mp3';
-import {darkTheme as DarkTheme} from '../components/Themes';
 import {mediaQueries} from '../components/Themes';
 
 const Box = styled.div`

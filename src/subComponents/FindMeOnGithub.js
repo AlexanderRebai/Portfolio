@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {mediaQueries} from '../components/Themes';
 import {motion} from 'framer-motion';
 import {Github} from '../components/AllSvgs';
 import {NavLink} from 'react-router-dom';

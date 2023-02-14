@@ -185,7 +185,7 @@ const Intro = () => {
         </Text>
       </SubBox>
       <SubBox>
-        <img src={img} alt="Profile Image" className="pic" />
+        <img src={img} className="pic" />
       </SubBox>
     </Box>
   );
