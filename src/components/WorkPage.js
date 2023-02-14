@@ -3,11 +3,12 @@ import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
 import img from '../assets/Images/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg';
-import {Blogs} from '../data/BlogData';
+import {Work} from '../data/WorkData';
 
 import WorkComponent from './WorkComponent';
 import Loading from '../subComponents/Loading';
 import {mediaQueries} from './Themes';
+import FindMeOnGithub from '../subComponents/FindMeOnGithub';
 
 const AnchorComponent = lazy (() =>
   import ('../subComponents/AnchorComponent.js')
@@ -23,6 +24,8 @@ const MainContainer = styled (motion.div)`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Container = styled.div`
@@ -31,14 +34,16 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   position: relative;
-  padding-bottom: 5rem;
+  z-index: 5;
 `;
 
 const Center = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 10rem;
+
 
   ${mediaQueries (30)`
     padding-top: 7rem;
@@ -97,10 +102,11 @@ const WorkPage = () => {
           <AnchorComponent numbers={numbers} />
           <Center>
             <Grid>
-              {Blogs.map ((blog, index) => {
-                return <WorkComponent key={index} blog={blog} />;
+              {Work.map ((work, index) => {
+                return <WorkComponent key={index} work={work} />;
               })}
             </Grid>
+            <FindMeOnGithub />
           </Center>
         </Container>
       </MainContainer>

@@ -3,6 +3,8 @@ import {motion} from 'framer-motion';
 import styled from 'styled-components';
 import {mediaQueries} from './Themes';
 
+import img from '../assets/Images/alex-portfolio-final.png';
+
 const Box = styled (motion.div)`
     position: absolute;
     left: 50%;
@@ -29,6 +31,8 @@ const Box = styled (motion.div)`
     border-right: 2px solid ${props => props.theme.text};
 
     z-index: 1;
+
+          
 
   ${mediaQueries (1200)`
     width: 65vw;
@@ -82,11 +86,13 @@ const SubBox = styled.div`
     width: 50%;
     position: relative;
     display: flex;
+    z-index: 1;
 
     .pic {
         position: absolute;
         bottom: 0;
         left: 50%;
+        
         transform: translate(-50%, 0%);
         width: 100%;
         height: auto;
@@ -96,14 +102,14 @@ const SubBox = styled.div`
     width: 100%;
     height: 50%;
     .pic {
-      width: 70%;
+      width: 100%;
     }
   `};
 
   ${mediaQueries (40)`
   
     .pic {
-      width: 80%;   
+      width: 100%;   
     }
   `};
 
@@ -111,13 +117,13 @@ const SubBox = styled.div`
      
 
     .pic {
-      width: 90%; 
+      width: 100%; 
     }
   `};
 
   ${mediaQueries (20)`
      .pic {
-        width: 80%;
+        width: 100%;
       }
  `};
 
@@ -152,15 +158,14 @@ const Text = styled (motion.div)`
 `;
 
 const Intro = () => {
-
   const [height, setHeight] = useState ('55vh');
 
   useEffect (() => {
-    if (window.matchMedia("(max-width: 50em)").matches) {
-      setHeight("70vh");
+    if (window.matchMedia ('(max-width: 50em)').matches) {
+      setHeight ('70vh');
     }
-    if (window.matchMedia("(max-width: 20em)").matches) {
-      setHeight("60vh");
+    if (window.matchMedia ('(max-width: 20em)').matches) {
+      setHeight ('60vh');
     }
   }, []);
 
@@ -179,7 +184,9 @@ const Intro = () => {
           </h6>
         </Text>
       </SubBox>
-      <SubBox />
+      <SubBox>
+        <img src={img} alt="Profile Image" className="pic" />
+      </SubBox>
     </Box>
   );
 };

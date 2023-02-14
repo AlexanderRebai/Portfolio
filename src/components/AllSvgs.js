@@ -19,6 +19,25 @@ export const PowerBtn = props => {
   );
 };
 
+// export const Home = props => {
+//   return (
+//     <svg
+//     aria-hidden="true"
+//     data-prefix="fas"
+//     data-icon="home"
+//     className="prefix__svg-inline--fa prefix__fa-power-off prefix__fa-w-16"
+//     viewBox="0 0 512 512"
+//     xmlns="http://www.w3.org/2000/svg"
+//     {...props}
+//   >
+//     <path
+//       fill={props.fill}
+//       d="M960.16 1083.131c-92.279 0-167.374-75.095-167.374-167.373 0-92.28 75.095-167.374 167.374-167.374s167.374 75.095 167.374 167.374c0 92.278-75.095 167.373-167.374 167.373ZM960.16 0 28 932.049l79 79 127.874-127.985V1920h557.912v-557.912h334.748V1920h557.912V883.064l127.874 127.985 79-79L960.16 0Z"
+//     />
+//   </svg>
+//   )
+// };
+
 export const Github = props => {
   return (
     <svg

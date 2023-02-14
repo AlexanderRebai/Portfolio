@@ -19,8 +19,7 @@ const Box = styled (motion.main)`
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: hidden;
-
+  overflow: scroll;
 `;
 
 const Main = styled (motion.div)`
@@ -28,14 +27,19 @@ const Main = styled (motion.div)`
   color: ${props => props.theme.text};
   padding: 2rem;
   width: 50vw;
-  height: 60vh;
+  height: auto;
   z-index: 3;
   line-height: 1.5;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: calc(0.6rem + 1vw);
   backdrop-filter: blur(4px);
+
+  &>* {
+    margin-top: 2rem;
+  }
   
   position: absolute;
   margin-left: auto;
@@ -49,7 +53,7 @@ const Main = styled (motion.div)`
 
   ${mediaQueries (40)`
           width: 60vw;
-          height: 50vh;
+          height: auto;
           top:50%;
           left:50%;
           transform:translate(-50%,-50%);
@@ -106,7 +110,15 @@ const AboutPage = () => {
           <BigTitle text="About" top="8%" left="10%" />
 
           <Main>
-            Hello
+            <p>
+              Hi, I'm Alexander, a Fullstack developer based in the charming city of Gent. I hold a Bachelor's degree in Computer Science, which has equipped me with a solid foundation in software development.
+            </p>
+            <p>
+              Beyond my technical skills, I am a simple and conscious person who approaches life with an open mind and a desire for self-discovery. To me, the essence of life is not determined by the number of things we accomplish, but by the level of presence we bring to each moment. I strive to live in the present and cherish every opportunity that comes my way.
+            </p>
+            <p>
+              As a developer, I am passionate about creating intuitive and user-friendly applications that solve real-world problems. I approach each project with a curious  mindset, always seeking out new ways to push the boundaries of what is possible.
+            </p>
           </Main>
 
         </Box>

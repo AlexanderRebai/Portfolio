@@ -5,7 +5,7 @@ import {motion} from 'framer-motion';
 import {Github} from '../components/AllSvgs';
 import {NavLink} from 'react-router-dom';
 
-const Box = styled (motion.a)`
+const Box = styled (motion.div)`
     width: calc(10rem + 15vw);
     text-decoration: none;
     height: 20rem;
@@ -82,6 +82,8 @@ const Title = styled.h3`
 
 const HashTags = styled.div`
     padding: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
 
     ${mediaQueries (25)`
       font-size:calc(0.5em + 1vw);
@@ -140,12 +142,12 @@ const Git = styled (NavLink)`
 `;
 
 const WorkComponent = props => {
-  const {name, tags, imgSrc, link} = props.blog;
+  const {name, tags, imgSrc, link, gitlink} = props.work;
 
   return (
     <Container variants={container}>
-      <Box to="/">
-        <Image img={imgSrc} />
+      <Box >
+        <Image img={require(`../assets/work-images/${imgSrc}`)} />
         <Title>{name}</Title>
         <HashTags>
           {tags.map ((tag, index) => {
@@ -153,10 +155,10 @@ const WorkComponent = props => {
           })}
         </HashTags>
         <Footer>
-          <Link to="/" target="_blank">
-            Visit
+          <Link to={{pathname: `${link != null ? link : gitlink}`}} target="_blank">
+          {`${link != null ? "Visit": "Visit Github"}`}
           </Link>
-          <Git to="/" target="_blank">
+          <Git to={{pathname: `${gitlink}`}} target="_blank">
             <Github width={40} height={40} />
           </Git>
         </Footer>

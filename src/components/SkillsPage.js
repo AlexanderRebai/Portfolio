@@ -1,145 +1,195 @@
-import {motion} from 'framer-motion';
-import React, {useEffect, useRef, lazy, Suspense} from 'react';
+import { motion } from "framer-motion";
+import styled, { ThemeProvider } from "styled-components";
+import { lazy, Suspense } from "react";
+import { darkTheme, lightTheme, mediaQueries } from "./Themes";
 
-import styled, {ThemeProvider} from 'styled-components';
+import Loading from "../subComponents/Loading";
 
-import {YinYang} from './AllSvgs';
-import {Work} from '../data/WorkData';
-import {darkTheme, lightTheme, mediaQueries} from './Themes';
+//Components
+const SocialIcons = lazy(() => import("../subComponents/SocialIcons"));
+const PowerButton = lazy(() => import("../subComponents/PowerButton"));
+const LogoComponent = lazy(() => import("../subComponents/LogoComponent"));
+const BigTitle = lazy(() => import("../subComponents/BigTitle"));
 
-import CardComponent from '../subComponents/CardComponent';
-import Loading from '../subComponents/Loading';
-
-const SocialIcons = lazy (() => import ('../subComponents/SocialIcons'));
-const PowerButton = lazy (() => import ('../subComponents/PowerButton'));
-const LogoComponent = lazy (() => import ('../subComponents/LogoComponent'));
-const BigTitle = lazy (() => import ('../subComponents/BigTitle'));
-
-const Box = styled (motion.div)`
-  background-color: ${props => props.theme.body};
+const Box = styled(motion.div)`
+  background-color: ${(props) => props.theme.body};
+  width: 100vw;
+  height: 100vh;
   position: relative;
   display: flex;
-  height: 400vh;
+  justify-content: space-evenly;
   align-items: center;
 
+  ${mediaQueries(50)`
+      flex-direction:column;  
+      padding:8rem 0;
+      height:auto;
+      &>*:nth-child(5){
+        margin-bottom:5rem;
+      }
+  `};
+
+  ${mediaQueries(30)`
+      &>*:nth-child(5){
+        margin-bottom:4rem;
+      } 
+  `};
 `;
 
-const Main = styled (motion.ul)`
-  position: fixed;
-  top: 12rem;
-  left: calc(10rem + 15vw);
-  height: 40vh;
+const Main = styled(motion.div)`
+  border: 2px solid ${(props) => props.theme.text};
+  color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.body};
+  padding: 2rem;
+  width: 30vw;
+  height: 50vh;
+  z-index: 3;
+  line-height: 1.5;
+  cursor: pointer;
+
+  ${mediaQueries(60)`
+      height: 55vh;
+  `};
+
+  ${mediaQueries(50)`
+      width: 50vw;
+      height: max-content;
+      margin-bottom:2rem;
+  `};
+
+  font-family: "Ubuntu Mono", monospace;
+
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  color: ${props => props.theme.text};
-
-  
-  ${mediaQueries (50)`
-    left:calc(8rem + 15vw);
-  `};
-
-  ${mediaQueries (40)`
-    top: 30%;
-    left:calc(6rem + 15vw);
-  `};
-  
-  ${mediaQueries (25)`    
-     left:calc(1rem + 15vw);
-  `};
-
+  &:hover {
+    color: ${(props) => props.theme.body};
+    background-color: ${(props) => props.theme.text};
+  }
 `;
 
-const Rotate = styled.span`
-  display: block;
-  position: fixed;
-  right:1rem;
-  bottom: 1rem;
-  width: 80px;
-  height: 80px;
-  z-index: 1;
+const Title = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1em + 1vw);
 
-  ${mediaQueries (40)`
-    width:60px;
-    height:60px;   
-    svg{
-      width:60px;
-      height:60px;
-    }
+  ${mediaQueries(60)`
+      font-size:calc(0.8em + 1vw);
   `};
 
-  ${mediaQueries (25)`
-    width:50px;
-    height:50px;
-    svg{
-      width:50px;
-      height:50px;
-    }
+  ${mediaQueries(50)`
+      font-size:calc(1em + 2vw);
+      margin-bottom:1rem;
   `};
 
+  ${mediaQueries(30)`
+      font-size:calc(1em + 1vw);
+  `};
+  ${mediaQueries(25)`
+      font-size:calc(0.8em + 1vw);
+      svg{
+        width:30px;
+        height:30px;
+      }
+  `};
+
+  ${Main}:hover & {
+    & > * {
+      fill: ${(props) => props.theme.body};
+    }
+  }
+
+  & > *:first-child {
+    margin-right: 1rem;
+  }
+`;
+const Description = styled.div`
+  color: ${(props) => props.theme.text};
+  font-size: calc(0.6em + 1vw);
+  padding: 0.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+
+  ${Main}:hover & {
+    color: ${(props) => props.theme.body};
+  }
+
+  ${mediaQueries(50)`
+      font-size: calc(0.8em + 1vw);
+  `};
+
+  ${mediaQueries(30)`
+      font-size:calc(0.7em + 1vw);
+  `};
+
+  ${mediaQueries(25)`
+      font-size:calc(0.5em + 1vw);
+  `};
+
+  strong {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  ul,
+  p {
+    margin-left: 2rem;
+  }
 `;
 
-//Framer-motion configuration
-const container = {
-  hidden: {opacity: 0},
-  show: {
-    opacity: 1,
-
-    transition: {
-      staggerChildren: 0.5,
-      duration: 0.8,
-    },
-  },
-};
-
-const SkillsPage = () => {
-  const ref = useRef (null);
-  const yinyang = useRef (null);
-
-  useEffect (() => {
-    let element = ref.current;
-
-    const ScrollSideways = () => {
-      element.style.transform = `translateX(-${window.scrollY}px)`;
-      yinyang.current.style.transform = `rotate(${window.scrollY}deg)`;
-    };
-
-    window.addEventListener ('scroll', ScrollSideways);
-    return () => window.removeEventListener ('scroll', ScrollSideways);
-  }, []);
-
+const MySkillsPage = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkTheme}>
+      <Suspense fallback={<Loading />}>
         <Box
-          itemSize={Work.length}
-          variants={container}
-          initial="hidden"
-          animate="show"
-          exit={{
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-            },
-          }}
+          key="skills"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1 } }}
+          exit={{ opacity: 0, transition: { duration: 0.5 } }}
         >
           <LogoComponent theme="dark" />
-          <SocialIcons theme="dark" />
           <PowerButton />
-          <BigTitle text="Skills" top="10%" right="20%" />
+          <SocialIcons theme="dark" />
 
-          <Main ref={ref}>
-            {Work.map (item => (
-              <CardComponent key={item.id} data={item} />
-            ))}
+          <Main>
+            <Title>
+            Frontend
+            </Title>
+            <Description>
+              I enjoy bringing code to life with Appealing designs and
+              animations. 
+            </Description>
+            <Description>
+              <strong>Skills</strong> <br />
+              <ul>
+              <p>
+                Html, Css, JavaScript, TypeScript, React, NextJs, C#, Redux, MaterialUI, ChakraUI, etc.
+              </p>
+              </ul>
+            </Description>
           </Main>
-
-          <Rotate ref={yinyang}>
-            <YinYang width={80} height={80} fill={darkTheme.text} />
-          </Rotate>
+          <Main>
+            <Title>
+              Backend
+            </Title>
+            <Description>
+              I love to build scalable and secure backend services by writing
+              clean and efficient code. 
+            </Description>
+            <Description>
+              <strong>Skills</strong> <br />
+              <p>
+                NodeJs, Python, SQL, NestJS, Express, Mongoose, GraphQL, Java, etc.
+              </p>
+            </Description>
+          </Main>
+          <BigTitle text="Skills" top="80%" right="30%" />
         </Box>
-      </ThemeProvider>
-    </Suspense>
+      </Suspense>
+    </ThemeProvider>
   );
 };
 
-export default SkillsPage;
+export default MySkillsPage;

@@ -1,61 +1,75 @@
 export const Work = [
-    {
-        id:1,
-        name:"Agency Landing Page",
-        description:"It is build on top of the React JS, with styledComponents and GSAP for smooth scrolling animations.",
-        tags:["react","gsap","styledComponents"],
-        
-        demo:"https://agency-website-eta.vercel.app/",
-        github:"https://github.com/codebucks27/Agency-website"
-    },
-    {
-        id:2,
-        name:"Job listing website",
-        description:"A Job listing website build in ReactJS. With searching and filtering functionalities.",
-        tags:["react","sass"],
-        
-        demo:"http://react-job-listing-website.codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/react-job-listing-website"
-        
-    },
-    {
-        id:3,
-        name:"Dev.to Clone",
-        description:"A clone of Dev.to build using ReactJS. With realtime fetching of articles from dev.to using API.",
-        tags:["react","api","sass"],
-        
-        demo:"http://devto-clone-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/devto-clone"
-    },
-    {
-        id:4,
-        name:"Sidebar Menu",
-        description:"A cool looking sidebar menu build using ReactJS and styledComponents.It has really smooth animations.",
-        tags:["react","styledComponents","react-router"],
-        
-        demo:"https://react-sidebar.vercel.app/",
-        github:"https://github.com/codebucks27/react-sidebar"
-       
-    },{
-        id:5,
-        name:"Todo App(React + Redux)",
-        description:"A todo app build using Redux-toolkit and framer-motion for smooth animations.",
-        tags:["react","redux","framer-motion"],
-        
-        demo:"http://react-redux-todo-app-git-main-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/React-Redux-Todo-App"
-        
-    },
-    {
-        id:6,
-        name:"Responsive Navigation Menu",
-        description:"A reponsive navbar menu component in ReactJS with react-router functionalities. Built from scratch.",
-        tags:["react","react-router","css"],
-        
-        demo:"http://react-responsive-navbar-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/React-responsive-navbar"
-        
-    },
-    
-  
-] 
+  {
+    id: 1,
+    name: 'Fullstack E-commerce Application: Built an e-commerce application for a local sandwich shop',
+    tags: ['NextJs', 'Javascript', 'Css', 'Redux', 'MongoDB'],
+    imgSrc: 'BroodjeszaakScreenshot.png',
+    link: 'https://www.broodjesvelje.be/',
+    gitlink: 'https://github.com/AlexanderRebai/Broodjeszaak',
+  },
+  {
+    id: 2,
+    name: 'Fullstack Real Estate Application: Built a real estate application for buying properties ',
+    tags: ['NextJs', 'ChakraUI', 'RapidAPI'],
+    imgSrc: 'RealEstateScreenshot.png',
+    link: 'https://real-estate-application-psi.vercel.app/',
+    gitlink: 'https://github.com/AlexanderRebai/RealEstate_Application',
+  },
+  {
+    id: 3,
+    name: 'Fullstack Travel Advisor Application: Built a travel companion application for planning trips',
+    tags: ['ReactJs', 'GoogleMapsAPI', 'axios', 'MaterialUI'],
+    imgSrc: 'TravelAdvisorScreenshot.png',
+    link: 'https://travel-companion-alex.netlify.app/',
+    gitlink: 'https://github.com/AlexanderRebai/Travel_Companion_App',
+  },
+  {
+    id: 4,
+    name: 'Accessibility Application using OpenStreetMaps: Built an application during a hackathon to help wheelchair users find accessible places',
+    tags: ['TypeScript', 'OpenStreetMaps', 'Css'],
+    imgSrc: 'OSOCScreenshot.png',
+    link: 'https://osoc22.github.io/project-on-wheels/',
+    gitlink: 'https://github.com/AlexanderRebai/OSOC2022',
+  },
+  {
+    id: 5,
+    name: 'Frontend Beauty Salon Application: Template beauty salon application design',
+    tags: ['Html', 'Css', 'JavaScript'],
+    imgSrc: 'BeautySalonScreenshot.png',
+    link: null,
+    gitlink: 'https://github.com/AlexanderRebai/Beauty_Salon_PWA',
+  },
+  {
+    id: 6,
+    name: 'My First Fullstack Project: Built a social media application for sharing feelings and insights about quotes',
+    tags: ['ReactJs', 'NodeJs', 'MaterialUI', 'MongoDB'],
+    imgSrc: 'FeelingsApp.png',
+    link: null,
+    gitlink: 'https://github.com/AlexanderRebai/Feelings_Application',
+  },
+  {
+    id: 7,
+    name: 'Fullstack Admin Dashboard Application: Built a fullstack admin dashboard application for Fluvius',
+    tags: ['ReactJs', 'NodeJs', 'Microsoft SQL Server'],
+    imgSrc: 'Fluvius.png',
+    link: null,
+    gitlink: 'https://github.com/AlexanderRebai/Fluvius_Web_App',
+  },
+  {
+    id: 8,
+    name: 'Fullstack Donation Application: Built a fullstack application for making donations, clone from TeamSeas.org',
+    tags: [
+      'ReactJs',
+      'TypeScript',
+      'GraphQL',
+      'NestJs',
+      'Prisma',
+      'ChakraUI',
+      'Formik',
+      'Sqlite',
+    ],
+    imgSrc: 'teamseas.png',
+    link: null,
+    gitlink: 'https://github.com/AlexanderRebai/project_teamseas_clone',
+  },
+];

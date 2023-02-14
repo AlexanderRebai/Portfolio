@@ -92,6 +92,50 @@ const About = styled (NavLink)`
   color: ${props => (props.click ? props.theme.body : props.theme.text)};
   text-decoration: none;
   z-index: 3;
+
+`;
+
+const MulticolorAbout = styled.span`
+    text-decoration: none;
+    position: relative;
+    color: ${props => (props.click ? props.theme.text : props.theme.text)};
+    font-size: 1.5rem;
+
+  ::before {
+    content: attr(data-char);
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    color: ${props => (props.click ? props.theme.body : props.theme.text)};
+  }
+`;
+
+const MulticolorSkills = styled.span`
+    text-decoration: none;
+    position: relative;
+    color: ${props => (props.click ? props.theme.body : props.theme.text)};
+
+  ::before {
+    content: attr(data-char);
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    color: ${props => (props.click ? props.theme.text : props.theme.text)};
+  }
+`;
+
+const MulticolorWork = styled.span`
+    text-decoration: none;
+    position: relative;
+    color: ${props => (props.click ? props.theme.text : props.theme.text)};
+
+  ::before {
+    content: attr(data-char);
+    position: absolute;
+    width: 75%;
+    overflow: hidden;
+    color: ${props => (props.click ? props.theme.body : props.theme.text)};
+  }
 `;
 
 const rotate = keyframes`
@@ -270,7 +314,11 @@ const Main = () => {
                   whileHover={{scale: 1.1}}
                   whileTap={{scale: 0.9}}
                 >
-                  Work
+                  {mq
+                    ? <MulticolorWork click={click} data-char="Work">
+                        Work
+                      </MulticolorWork>
+                    : 'Work '}
                 </motion.h2>
               </Work>
             : <Work click={+false} onClick={() => setpath ('work')} to="/work">
@@ -286,7 +334,7 @@ const Main = () => {
                   whileHover={{scale: 1.1}}
                   whileTap={{scale: 0.9}}
                 >
-                  Work
+                   Work 
                 </motion.h2>
               </Work>}
 
@@ -304,7 +352,11 @@ const Main = () => {
               whileHover={{scale: 1.1}}
               whileTap={{scale: 0.9}}
             >
-              Skills
+              {mq
+                ? <MulticolorSkills click={click} data-char="Skills">
+                    Skills
+                  </MulticolorSkills>
+                : 'Skills'}
             </motion.h2>
           </Skills>
 
@@ -327,7 +379,11 @@ const Main = () => {
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
               >
-                About.
+                {mq
+                  ? 'About.'
+                  : <MulticolorAbout click={click} data-char="About.">
+                      About.
+                    </MulticolorAbout>}
               </motion.h2>
             </About>
           </BottomBar>
