@@ -40,7 +40,7 @@ const Container = styled.div`
 `;
 
 const Contact = styled.a`
-  color: ${props => props.theme.text};
+  color: ${props => (props.click ? props.theme.body : props.theme.text)};
   position: absolute;
   top: 2rem;
   right: calc(1rem + 2vw);
@@ -262,7 +262,7 @@ const Main = () => {
             ? <Contact
                 click={+click}
                 target="_blank"
-                href="mailto:codebucks27@gmail.com"
+                href="mailto:rebaialexander@hotmail.com"
               >
                 <motion.h3
                   initial={{
@@ -282,7 +282,7 @@ const Main = () => {
             : <Contact
                 click={+false}
                 target="_blank"
-                href="mailto:codebucks27@gmail.com"
+                href="mailto:rebaialexander@hotmail.com"
               >
                 <motion.h3
                   initial={{

@@ -151,7 +151,7 @@ const Text = styled (motion.div)`
           font-size: calc(1rem + 1.5vw);
         `};
 
-        ${mediaQueries (20)`
+        ${mediaQueries (30)`
           padding: 1rem;
         `};
     }
@@ -165,7 +165,7 @@ const Intro = () => {
       setHeight ('70vh');
     }
     if (window.matchMedia ('(max-width: 20em)').matches) {
-      setHeight ('60vh');
+      setHeight ('70vh');
     }
   }, []);
 
@@ -177,11 +177,22 @@ const Intro = () => {
     >
       <SubBox>
         <Text>
-          <h1>Hi,</h1>
-          <h2>I'm Alexander Rebai.</h2>
-          <h6>
-            Full Stack Developer with a passion for Machine Learning.
-          </h6>
+          { window.matchMedia ('(max-width: 20em)').matches?
+            <>
+              Hi, I'm Alexander Rebai. Full Stack Developer with a passion for
+              Machine Learning.
+            </>
+            : 
+            (
+              <>
+                <h1>Hi,</h1>
+                <h2>I'm Alexander Rebai.</h2>
+                <h6>
+                  Full Stack Developer with a passion for Machine Learning.
+                </h6>  
+              </>
+            )
+          }
         </Text>
       </SubBox>
       <SubBox>

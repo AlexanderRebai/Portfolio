@@ -57,6 +57,12 @@ const Main = styled (motion.div)`
       margin-bottom:2rem;
   `};
 
+  ${mediaQueries (30)`
+      width: 45svw;
+      height: max-content;
+      margin-bottom:2rem;
+  `};
+
   font-family: "Ubuntu Mono", monospace;
 
   display: flex;
@@ -135,7 +141,7 @@ const Description = styled.div`
   }
   ul,
   p {
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 `;
 

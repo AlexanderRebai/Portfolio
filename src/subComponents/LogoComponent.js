@@ -12,11 +12,6 @@ const Logo = styled.div`
     top: 2rem;
     z-index: 3;
 
-  ${mediaQueries (40)`
-      font-size:1.5em;
-      left:1rem;
-      top:2rem;
-  `};
 
 `;
 

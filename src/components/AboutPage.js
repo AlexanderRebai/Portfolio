@@ -20,6 +20,13 @@ const Box = styled (motion.main)`
   height: 100vh;
   position: relative;
   overflow: scroll;
+  padding-bottom: 2rem;
+
+  ${mediaQueries (40)`
+    padding-top: 8rem;
+    padding-bottom: 10rem;
+  `};
+  
 `;
 
 const Main = styled (motion.div)`
@@ -36,6 +43,7 @@ const Main = styled (motion.div)`
   align-items: center;
   font-size: calc(0.6rem + 1vw);
   backdrop-filter: blur(4px);
+
 
   &>* {
     margin-top: 2rem;
@@ -62,9 +70,9 @@ const Main = styled (motion.div)`
   `};
   ${mediaQueries (30)`
           width: 50vw;
-          height: auto;
+          height: fit-content;
           backdrop-filter: none;
-          margin-top:2rem;
+          margin-top:4rem;
 
   `};
 
