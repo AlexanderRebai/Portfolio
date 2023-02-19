@@ -14,6 +14,7 @@ const LogoComponent = lazy (() => import ('../subComponents/LogoComponent'));
 const MainContainer = styled (motion.div)`
   background: ${props => props.theme.body};
   width: 100vw;
+  height: 100svh;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -247,7 +248,7 @@ const Main = () => {
                   onClick={() => handleClick ()}
                   width={click ? 80 : 150}
                   height={click ? 80 : 150}
-                  fill="currentColor"
+                  fill="#000000"
                 />
               : <YinYang
                   onClick={() => handleClick ()}
